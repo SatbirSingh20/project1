@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projext Work 1</title>
+    <style>
+        p{color: #858585;;} ol{color: #858585;} ul{color: #858585;}
+    </style>
 
 </head>
 <body>
@@ -39,7 +42,8 @@
     <p>Here is the algorithm (in pseudocode) for doing backtracking from a given node n: </p>
 
     <b>
-        <pre> boolean solve(Node n) {
+        <pre style="color: #007EB4;">
+             boolean solve(Node n) {
         if n is a leaf node {
             if the leaf is a goal node, return true
             else return false
@@ -66,17 +70,20 @@
 <p>Hence, to decide whether any non-leaf node n is solvable (part of a path to a goal node), all you have to do is test whether any child of n is solvable. This is done recursively, on each child of n. In the above code, this is done by the lines</p>
 
 <b>
-    <pre>    for each child c of n {
+    <pre style="color: #007EB4;">
+            for each child c of n {
     if solve(c) succeeds, return true
 }
 return false
+
 </pre>
 </b>
 
 <p>Eventually the recursion will "bottom" out at a leaf node. If the leaf node is a goal node, it is solvable; if the leaf node is not a goal node, it is not solvable. This is our base case. In the above code, this is done by the lines</p>
 
 <b>
-    <pre>if n is a leaf node {
+    <pre style="color: #007EB4;">
+        if n is a leaf node {
     if the leaf is a goal node, return true
     else return false}
 </pre>
@@ -99,7 +106,7 @@ return false
 <p>Backtracking is a rather typical recursive algorithm, and any recursive algorithm can be rewritten as a stack algorithm. In fact, that is how your recursive algorithms are translated into machine or assembly language</p>
 
 <b>
-    <pre>
+    <pre style="color: #007EB4;">
         boolean solve(Node n) {
             put node n on the stack;
             while the stack is not empty {
@@ -128,7 +135,7 @@ return false
 <p>Here is the recursive backtracking algorithm, modified slightly to print (in reverse order) the nodes along the successful path:</p>
 
 <b>
-    <pre>
+    <pre style="color: #007EB4;">
         boolean solve(Node n) {
             if n is a leaf node {
                 if the leaf is a goal node {
@@ -180,7 +187,8 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 <p>Here's a definition of the BinaryTree class:</p>
 
 <b>
-  <pre>public class BinaryTree {
+  <pre style="color: #007EB4;">
+    public class BinaryTree {
     BinaryTree leftChild = null;
     BinaryTree rightChild = null;
     boolean isGoalNode = false;
@@ -199,7 +207,7 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 <p>next we will create a TreeSearch class, and in it we will define a method makeTree which constructs the above binary tree.</p>
 
 <b>
-    <pre>
+    <pre style="color: #007EB4;">
         static BinaryTree makeTree() {
             BinaryTree root, a, b, c, d, e, f;
             c = new BinaryTree("C", null, null, false);
@@ -217,7 +225,7 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 <p>Here's a main program to create a binary tree and try to solve it:</p>
 
 <b>
-    <pre>
+    <pre style="color: #007EB4;">
         public static void main(String args[]) {
             BinaryTree tree = makeTree();
             System.out.println(solvable(tree));
@@ -228,7 +236,7 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 <p>And finally, here's the recursive backtracking routine to "solve" the binary tree by finding a goal node.</p>
 
 <b>
-<pre>
+<pre style="color: #007EB4;">
         static boolean solvable(BinaryTree node) {
             /* 1 */  if (node == null) return false;
             /* 2 */  if (node.isGoalNode) return true;
@@ -257,7 +265,7 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 
 
 <b>
-    <pre>
+    <pre style="color: #007EB4;">
         static boolean solvable(BinaryTree node) {
             if (node.isGoalNode) return true;
             if (node.leftChild != null && solvable(node.leftChild)) return true;
@@ -312,7 +320,8 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 
 <p>And here's the code for method 2:</p>
 
-<p>boolean explore2(int row, int column, int color) {
+<p>
+    boolean explore2(int row, int column, int color) {
     if (row >= NUM_ROWS) return true;
     if (okToColor(row, column, color)) {
         map[row][column] = color;
@@ -331,18 +340,18 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 <table border="1" cellspacing="0">
     <tr>
         <td></td>
-        <td>2 by 3 map</td>
-        <td>3 by 3 map	</td>
-        <td>3 by 4 map</td>
+        <td style="background-color: #858585;">2 by 3 map</td>
+        <td style="background-color: #858585;">3 by 3 map	</td>
+        <td style="background-color: #858585;">3 by 4 map</td>
     </tr>
     <tr>
-        <td>Method 1:</td>
+        <td style="background-color: #858585;">Method 1:</td>
         <td>60 ms.</td>
         <td>940 ms.	</td>
         <td>60530 ms.(1 minute) </td>
     </tr>
     <tr>
-        <td>Method 2:</td>
+        <td style="background-color: #858585;">Method 2:</td>
         <td>0 ms.	</td>
         <td>0 ms.	</td>
         <td>0 ms.   </td>
@@ -365,7 +374,7 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 <p>Here's our debugging code. For this trivial program, there's almost more debugging code than actual code, but in larger programs the proportions will be better.</p>
 
 <b>
-    <pre>
+    <pre style="color: #007EB4;">
         static String name(BinaryTree node) {
             if (node == null) return null;
             else return node.name;
@@ -390,7 +399,7 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 <p>To use this code, we modify solvable as follows:</p>
 
 <b>
-    <pre>
+    <pre style="color: #007EB4;">
         static boolean solvable(BinaryTree node) {
             enter(node);
             if (node == null) return no(node);
@@ -405,7 +414,7 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 <p>And we get these results:</p>
 
 <b>
-    <pre>
+    <pre style="color: #858585;">
         Entering solvable(Root)
     |  Entering solvable(A)
     |  |  Entering solvable(C)
@@ -437,7 +446,7 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 <p>The simple solution is to make your debugging statements conditional. For example,</p>
 
 <b>
-    <pre>
+    <pre style="color: #007EB4;">
         static final boolean debugging = false;
         static void enter(BinaryTree node) {
             if (debugging) {
@@ -473,7 +482,7 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 <p>will print out a message something like this, and the program will then continue normally. That is, the above code just acts like a print statement.</p>
 
 <b>
-    <pre>
+    <pre style="color: #007EB4;">
         java.lang.Exception: Checkpoint Charlie
         at TreeSearch.solvable(TreeSearch.java:53)
         at TreeSearch.solvable(TreeSearch.java:57)
@@ -531,7 +540,7 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 <center>
     <table>
         <tr>
-            <td><b>Starting position:</b></td>
+            <td ><b>Starting position:</b></td>
             <td>
                 <table border="1" cellspacing="0">
                     <tr>
@@ -682,7 +691,7 @@ There is an easier way to keep track of which children have been tried,<b>if</b>
 
 <p>With these methods, our central backtracking method can be written as follows:</p>
 
-<pre>
+<pre style="color: #007EB4;" >
     <b>
         boolean solvable(int[] board) {
             if (puzzleSolved(board)) {
